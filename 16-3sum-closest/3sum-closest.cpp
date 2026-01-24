@@ -20,6 +20,7 @@ public:
             while(j<k){
                 
                 int sum=nums[i]+nums[j]+nums[k];
+                if(sum==target) return target;
                 if(abs(target-sum)<abs(target-base)){
                     base=sum;
                 }
