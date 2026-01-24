@@ -5,7 +5,7 @@ public:
         
         int len=nums.size();
         int base=nums[0]+nums[1]+nums[2];
-        int sum;
+        
         
         
 
