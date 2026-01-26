@@ -16,7 +16,7 @@ public:
         ListNode* first=dummy;
         ListNode* second=dummy;
         int diff=0;
-        for(int i=0;i<=n;i++){
+        while(diff<=n){
             first=first->next;
             diff++;
         }
