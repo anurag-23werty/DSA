@@ -7,7 +7,7 @@ public:
         long long maxi=0;
         
         for(int j=0;j<nums.size();j++){
-            while(st.count(nums[j])==1 || st.size()==k){
+            while(st.count(nums[j]) || st.size()==k){
                 st.erase(nums[i]);
                 curSum-=nums[i];
                 i++;
