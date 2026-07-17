@@ -17,7 +17,7 @@ public:
                 }
             }
             else{
-                if(target>nums[mid] && target<=nums[end]){
+                if(target<=nums[end] && target>=nums[mid]){
                     start=mid+1;
                 }
                 else{
