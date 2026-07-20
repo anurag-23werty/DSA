@@ -21,6 +21,7 @@ public:
             st.insert(i);
             int pos = nums[i]>0;
             int curr=i;
+            if(nums[curr]==0) continue;
 
             while(true){
                 int next = nextIndex(curr,nums);
@@ -46,6 +47,24 @@ public:
                     }
                 }
                 curr=next;
+
+            }
+            curr = i;
+            if(pos){
+                while(nums[curr]>0){
+                    int next = nextIndex(curr,nums);
+                    nums[curr]=0;
+                    curr= next;
+
+                }
+            }
+            else{
+                while(nums[curr]<0){
+                    int next = nextIndex(curr,nums);
+                    nums[curr]=0;
+                    curr= next;
+
+                }
 
             }
         }
