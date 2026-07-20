@@ -5,7 +5,7 @@ public:
         int seq = nums[next];
         int n =nums.size();
         if(seq>0){
-            next = (next+seq)%nums.size();
+            next = ((next+seq)% n+n)%n;
         }
         else{
             
