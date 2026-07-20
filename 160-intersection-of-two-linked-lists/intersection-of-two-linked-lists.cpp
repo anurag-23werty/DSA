@@ -12,8 +12,8 @@ public:
         ListNode* temp1 = headA;
         ListNode* temp2 = headB;
         while(temp1!=temp2){
-            temp1 = (temp1==nullptr)? headB:temp1->next;
-            temp2 = (temp2==nullptr)? headA:temp2->next;
+            temp1 = (temp1)? temp1->next:headB;
+            temp2 = (temp2)? temp2->next:headA;
         }
         return temp1;
         
