@@ -23,10 +23,11 @@ public:
             i++;
         }
         curr1->next =list2;
-        while(curr1->next!=nullptr){
-            curr1=curr1->next;
+        ListNode* tail = list2;
+        while(tail->next!=nullptr){
+            tail=tail->next;
         }
-        curr1->next = curr2;
+        tail->next = curr2;
         return list1;
         
     }
