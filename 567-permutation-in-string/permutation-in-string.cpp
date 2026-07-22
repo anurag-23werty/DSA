@@ -19,11 +19,11 @@ bool isMatched(vector<int>mp1,vector<int>mp2){
             mp2[s2[i]-'a']++;
             
         }
-        if(isMatched(mp1,mp2)) return true;
+        if(mp1==mp2) return true;
         for(int i=1;i<=m-n;i++){
             mp2[s2[i-1]-'a']--;
             mp2[s2[i+n-1]-'a']++;
-            if(isMatched(mp1,mp2)) return true;
+            if(mp1==mp2) return true;
 
         }
         return false;
