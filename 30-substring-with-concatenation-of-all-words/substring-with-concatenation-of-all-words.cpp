@@ -16,7 +16,7 @@ public:
             int left=i;
             int matched=0;
             unordered_map<string,int>seen;
-            for(int j=i;j<n;j+=wordlen){
+            for(int j=i;j+wordlen<=n;j+=wordlen){
                 string word=s.substr(j,wordlen);
                 if(required.count(word)){
                     seen[word]++;
