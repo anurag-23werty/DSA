@@ -18,10 +18,10 @@ public:
     int minDays(vector<int>& bloomDay, int m, int k) {
         int x = bloomDay.size();
         if(x<((long)m*k)) return -1;
-        int mini = *min_element(bloomDay.begin(),bloomDay.end());
-        int maxi = *max_element(bloomDay.begin(),bloomDay.end());
-        int left = mini;
-        int right = maxi;
+        // int mini = *min_element(bloomDay.begin(),bloomDay.end());
+        // int maxi = *max_element(bloomDay.begin(),bloomDay.end());
+        int left = 1;
+        int right = 1e9;
         while(left<=right){
             int mid = left+(right-left)/2;
             if(isDay(bloomDay,mid,m,k)){
