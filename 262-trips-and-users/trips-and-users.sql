@@ -8,7 +8,7 @@ round(
             then 1
             else 0
         end
-    )::numeric/count(*),2
+    )::numeric/count(request_at),2
 ) as "Cancellation Rate"
 from Trips t
 join Users u
