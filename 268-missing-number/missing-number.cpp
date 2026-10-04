@@ -2,13 +2,11 @@ class Solution {
 public:
     int missingNumber(vector<int>& nums) {
         
-        vector<int>res(nums.size()+1,0);
-        for(int i=0;i<nums.size();i++){
-            res[nums[i]] = 1;
+        int n = nums.size();
+        int maxi = (n*(n+1)) /2;
+        for(int i:nums){
+            maxi-= i;
         }
-        for(int j=0;j<res.size();j++){
-            if(res[j]==0) return j;
-        }
-    return 0;  
+        return maxi;
     }
 };
