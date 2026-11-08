@@ -1,38 +1,47 @@
 class Solution {
 public:
-    string minWindow(string s, string t) {
-        vector<int>v(256,0);
-        int count=0;
-        int sIndex=-1;
-        int mini = INT_MAX;
-        for(auto &i:t){
-            v[i]++;
-        }
-        int l=0;
-        int r=0;
-        while(r<s.length()){
-            if(v[s[r]]>0){
-                count++;
-            }
-            v[s[r]]--;
-            while(count==t.length()){
-                if(r-l+1<mini){
-                    mini = r-l+1;
-                    sIndex=l;
-
-                }
-                v[s[l]]++;
-                if(v[s[l]]>0) {
-                    count--;
-                  
-                }
-                l++;
-                
-            }
-            r=r+1;
-
-        }
-        return sIndex==-1?"":s.substr(sIndex,mini);
-        
+bool fun(vector<int> &have, vector<int> &need)
+{
+    for(int i=0;i<256;i++)
+    {
+        if(have[i]<need[i])
+        return false;
     }
+    return true;
+}
+    string minWindow(string s, string t) {
+        int n=s.size();
+        int m=t.size();
+        vector<int> have(256,0);
+        vector<int> need(256,0);
+        int i;
+        if(n<m)
+        return "";
+        for(i=0;i<m;i++)
+        need[t[i]]++;
+
+        int low=0,high=0;
+        int res=INT_MAX;
+        int start=-1;
+        for(high=0;high<n;high++)
+        {
+            have[s[high]]++;
+
+            while(fun(have,need)) // jab tk sahi hai
+            {
+                int len=high-low+1;
+                if(res>len)
+                {
+                    res=len;
+                    start=low;
+                }
+                have[s[low]]--;
+                low++;
+            }
+        }
+        if(res==INT_MAX)
+        return "";
+        return s.substr(start,res);
+    }
+
 };
