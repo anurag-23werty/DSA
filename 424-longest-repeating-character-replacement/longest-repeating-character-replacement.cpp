@@ -1,26 +1,46 @@
 class Solution {
 public:
-    int characterReplacement(string s, int k) {
-         int l = 0;
-        int r = 0;
-        int maxf =0;
-        int maxlen=0;
-        vector<int>v(26,0);
-        while(r<s.length()){
-            v[s[r]-'A']++;
-            maxf = max(maxf,v[s[r]-'A']);
-            if((r-l+1)-maxf>k){
-                v[s[l]-'A']--;
-                maxf=0;
-                l++;
-                
-            }
-           
-            maxlen = max(maxlen,r-l+1);
-            r++;
-            
+    int find(vector<int>v){
+        int maxi = 0;
+        for(int i=0;i<256;i++){
+            maxi = max(maxi,v[i]);
+
         }
-        return maxlen;
+        return maxi;
+    }
+    int characterReplacement(string s, int k) {
+        int n = s.length();
+        vector<int>vec(256,0);
+
+        int i = 0;
+        int len = 0;
+        int dup =0;
+        int diff =0 ;
+        int maxi = 0;
+
+        for(int j=0;j<n;j++){
+            vec[s[j]]++;
+            len = j-i+1;
+            dup = find(vec);
+            diff = len-dup;
+            while(diff>k){
+                vec[s[i]]--;
+                i++;
+                len = j-i+1;
+                dup = find(vec);
+                diff = len-dup;
+
+
+            }
+            
+            maxi = max(maxi,len);
+
+            
+
+            
+
+        }
+        return maxi;
         
     }
 };
