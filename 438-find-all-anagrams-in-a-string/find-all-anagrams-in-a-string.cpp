@@ -1,22 +1,37 @@
 class Solution {
 public:
+    bool fn(vector<int>v1,vector<int>v2){
+        for(int i=0;i<256;i++){
+            if(v1[i]!=v2[i]) return 0;
+        }
+        return 1;
+    }
     vector<int> findAnagrams(string s, string p) {
-        vector<int>v1(26,0);
-        vector<int>v2(26,0);
-        vector<int>ans;
+        vector<int>vec(256,0);
         int n = p.length();
-        int m = s.length();
-        if(n>m) return {}; 
         for(int i=0;i<n;i++){
-            v1[s[i]-'a']++;
-            v2[p[i]-'a']++;
+            vec[p[i]]++;
 
         }
-        if(v1==v2) ans.push_back(0);
-        for(int i=1;i<=m-n;i++){
-            v1[s[i-1]-'a']--;
-            v1[s[i+n-1]-'a']++;
-            if(v1==v2) ans.push_back(i);
+        vector<int>vec2(256,0);
+        vector<int>ans;
+        int i=0;
+        int m = s.length();
+        for(int j=0;j<m;j++){
+            vec2[s[j]]++;
+            if(j-i+1==n){
+            if(fn(vec,vec2)){
+                    ans.push_back(i);
+                    vec2[s[i]]--;
+                    i++;
+
+            }
+            else{
+                vec2[s[i]]--;
+                i++;
+            }
+            }
+
         }
         return ans;
         
