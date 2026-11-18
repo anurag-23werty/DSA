@@ -1,24 +1,30 @@
 class Solution {
 public:
-   
-    bool isHappy(int n) {
-        unordered_set<int>st;
-        while(true){
-            int sum=0;
-            while(n>0){
-                int x = n%10;
-                sum+=(x*x);
-                n=n/10;
+    int fn(int a){
+        int sum=0;
+        while(a!=0){
+            int num = a;
+            a =a/10;
+            sum = sum+(pow(num%10,2));
 
-            }
-
-            if(sum == 1) return true;
-            n=sum;
-            if(st.find(sum)!=st.end()) return false ;
-            st.insert(sum);
-
+            
 
         }
+        return sum;
+    }
+    bool isHappy(int n) {
+        int slow = n;
+        int fast = n;
+        while(fast!=1){
+            slow = fn(slow);
+            fast = fn(fast);
+            fast = fn(fast);
+            if(slow==fast && slow!=1){
+                return false;
+            }
+        }
+        return true;
+
         
     }
 };
